@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luxe & Legacy</title>
+</head>
+<body>
+    <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Add Products</h4>
+<!--                  <p class="card-description">-->
+<!--                    Basic form elements-->
+<!--                  </p>-->
+                  <form class="forms-sample" method="post" action="{% url 'update_product' data_id=data.id %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleselect">Category Name</label>
+                            <select id="exampleselect" name="Category_Name" class="form-control">
+                                <option value="">Select Category</option>
+                                {% for d in category %}
+                                    <option value="{{ d.Name }}" {% if d.Name == data.Category_Name %}selected{% endif %}>
+                                        {{ d.Name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputName1">Product Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Product Name" fdprocessedid="ailhie" name="Product_Name" value="{{ data.Product_Name }}">
+                    </div>
+
+                      <div class="form-group">
+                      <label for="exampleInputName2">Brand Name</label>
+                      <input type="text" class="form-control" id="exampleInputName2" placeholder="Brand Name" fdprocessedid="ailhie" name="Brand_Name" value="{{ data.Brand_Name }}">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleInputName3">Price</label>
+                      <input type="text" class="form-control" id="exampleInputName3" placeholder="Price" fdprocessedid="ailhie" name="Price" value="{{ data.Price }}">
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputEmail3">Email address</label>-->
+<!--                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" fdprocessedid="2ly99s">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputPassword4">Password</label>-->
+<!--                      <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password" fdprocessedid="z6q54">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleSelectGender">Gender</label>-->
+<!--                        <select class="form-control" id="exampleSelectGender" fdprocessedid="71dyk">-->
+<!--                          <option>Male</option>-->
+<!--                          <option>Female</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+                      <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" name="Description">{{ data.Description }}"</textarea><br>
+
+                    <div class="form-group">
+                      <label for="fileupload1">Upload Image</label><br>
+                        <img src="{{ data.Image1.url }}" alt="Image 3" style="max-width: 70px; max-height: 70px;">
+                      <input type="file" name="Image1" id="fileupload1">
+                    </div>
+
+                      <div class="form-group">
+                      <label for="fileupload2">Upload Image</label><br>
+                          <img src="{{ data.Image2.url }}" alt="Image 3" style="max-width: 70px; max-height: 70px;">
+                      <input type="file" name="Image2" id="fileupload2">
+                    </div>
+
+                      <div class="form-group">
+                      <label for="fileupload3">Upload Image</label><br>
+                          <img src="{{ data.Image3.url }}" alt="Image 3" style="max-width: 70px; max-height: 70px;">
+                      <input type="file" name="Image3" id="fileupload3">
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputCity1">City</label>-->
+<!--                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location" fdprocessedid="9i2tzd">-->
+<!--                    </div>-->
+
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2" fdprocessedid="t5xmhw">Submit</button>
+                    <button class="btn btn-light" fdprocessedid="hlpg0k">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+</body>
+</html>
+{% endblock %}

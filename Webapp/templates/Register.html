@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Registration Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{% static 'Register_style/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'Register_style/css/style.css' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper" style="background:#e9edee;">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="{% static 'Register_style/images/medium-shot-beautiful-woman-nature.jpg' %}" alt="">
+				</div>
+				<form action="{% url 'register_details' %}" method="post" style="margin-top:40px;" name="myform">
+					{% csrf_token %}
+					<h3>Registration Form</h3>
+<!--					<div class="form-group">-->
+<!--						<input type="text" placeholder="First Name" class="form-control" name="fname">-->
+<!--						<input type="text" placeholder="Last Name" class="form-control" name="lname">-->
+<!--					</div>-->
+					<div class="form-wrapper">
+						<input type="text" placeholder="Username" class="form-control" name="username" required>
+						<i class="zmdi zmdi-account"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="text" placeholder="Email Address" class="form-control" name="email" required>
+						<i class="zmdi zmdi-email"></i>
+					</div>
+<!--					<div class="form-wrapper">-->
+<!--						<select name="" id="" class="form-control" name="gender">-->
+<!--							<option value="" disabled selected>Gender</option>-->
+<!--							<option value="male">Male</option>-->
+<!--							<option value="femal">Female</option>-->
+<!--							<option value="other">Other</option>-->
+<!--						</select>-->
+<!--						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>-->
+<!--					</div>-->
+					<div class="form-wrapper">
+						<input type="password" placeholder="Password" class="form-control" name="password1" required>
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="password" placeholder="Confirm Password" class="form-control" name="password2" required>
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<button>Register
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+					<a href="{% url 'web_login' %}">
+						<button type="button">
+							Login <i class="zmdi zmdi-arrow-right"></i>
+						</button>
+					</a>
+
+
+
+
+				</form>
+			</div>
+		</div>
+
+	<script>
+	function newfunction(){
+		p1 = document.myform.password1.value;
+		p2 = document.myform.password2.value;
+		if (p1==p2){
+			return true
+		}
+		else{
+			alert("Password doesn't match..")
+			return false
+		}
+	}
+	</script>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+    {% for i in messages %}
+
+        {% if i.tags == 'warning' %}
+            <script>
+                swal('{{i}}', '', 'warning');
+            </script>
+        {% elif i.tags == 'error' %}
+            <script>
+                swal('{{i}}', '', 'error');
+            </script>
+        {% elif i.tags == 'info' %}
+            <script>
+                swal('{{i}}', '', 'info');
+            </script>
+        {% else %}
+            <script>
+                swal('{{i}}', '', 'success');
+            </script>
+
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+	</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fashi Template">
+    <meta name="keywords" content="Fashi, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>About Us </title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'homestyle/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'homestyle/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'homestyle/css/themify-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'homestyle/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'homestyle/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'homestyle/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'homestyle/css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'homestyle/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'homestyle/css/style.css' %}" type="text/css">
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="ht-left">
+                    <div class="mail-service">
+                        <i class=" fa fa-envelope"></i>
+                        luxe&legacy@gmail.com
+                    </div>
+                    <div class="phone-service">
+                        <i class=" fa fa-phone"></i>
+                        +65 11 188 888
+                    </div>
+                </div>
+                <div class="ht-right">
+                    <a  href="{% url 'user_logout' %}" class="login-panel"><i class="fa fa-user"></i>Welcome {{ request.session.username }} / Logout</a>
+                    <div class="lan-selector">
+                        <select class="language_drop" name="countries" id="countries" style="width:300px;">
+                            <option value='yt' data-image="{% static 'homestyle/img/flag-1.jpg' %}" data-imagecss="flag yt"
+                                data-title="English">English</option>
+                            <option value='yu' data-image="{% static 'homestyle/img/flag-2.jpg' %}" data-imagecss="flag yu"
+                                data-title="Bangladesh">German </option>
+                        </select>
+                    </div>
+<!--                    <div class="top-social">-->
+<!--                        <a href="#"><i class="ti-facebook"></i></a>-->
+<!--                        <a href="#"><i class="ti-twitter-alt"></i></a>-->
+<!--                        <a href="#"><i class="ti-linkedin"></i></a>-->
+<!--                        <a href="#"><i class="ti-pinterest"></i></a>-->
+<!--                    </div>-->
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="logo">
+                            <a href="./index.html">
+                             <img src="{% static 'homestyle/img/logoluxe2.png' %}" alt="" style="height:90px;width:100px;margin-top:-20px;">
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="advanced-search">
+                            <button type="button" class="category-btn">All Categories</button>
+                            <div class="input-group">
+                                <input type="text" placeholder="What do you need?">
+                                <button type="button"><i class="ti-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-right col-md-3">
+                        <ul class="nav-right">
+                            <li class="heart-icon">
+                                <a href="#">
+                                    <i class="icon_heart_alt"></i>
+
+                                </a>
+                            </li>
+                            <li class="cart-icon">
+                                <a href="{% url 'cart_page' %}">
+                                    <i class="icon_bag_alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="container">
+<!--                <div class="nav-depart">-->
+<!--                    <div class="depart-btn">-->
+<!--                        <i class="ti-menu"></i>-->
+<!--                        <span>All departments</span>-->
+<!--                        <ul class="depart-hover">-->
+<!--                            <li class="active"><a href="#">Women’s Clothing</a></li>-->
+<!--                            <li><a href="#">Men’s Clothing</a></li>-->
+<!--                            <li><a href="#">Kid's Clothing</a></li>-->
+<!--                            <li><a href="#">Brand Fashion</a></li>-->
+<!--                            <li><a href="#">Featured Fashions</a></li>-->
+<!--                            <li><a href="#">Luxury Brands</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <nav class="nav-menu mobile-menu">
+                    <ul>
+                        <li><a href="{% url 'homepage' %}">Home</a></li>
+                        <li class="active"><a href="{% url 'about_page' %}">About Us</a></li>
+                        <li><a href="#">Categories</a>
+                            <ul class="dropdown">
+                                {% for i in cat %}
+                                <li><a href="{% url 'filtered_product' cat_name=i.Name %}">{{i.Name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'all_products' %}">Products</a></li>
+                        <li><a href="{% url 'contact_page' %}">Contact</a></li>
+<!--                        <li><a href="#">Pages</a>-->
+<!--                            <ul class="dropdown">-->
+<!--                                <li><a href="./blog-details.html">Blog Details</a></li>-->
+<!--                                <li><a href="./shopping-cart.html">Shopping Cart</a></li>-->
+<!--                                <li><a href="./check-out.html">Checkout</a></li>-->
+<!--                                <li><a href="./faq.html">Faq</a></li>-->
+<!--                                <li><a href="./register.html">Register</a></li>-->
+<!--                                <li><a href="./login.html">Login</a></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="#"><i class="fa fa-home"></i>Home</a>
+                        <span>About Us</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <h2 style="text-align:center;font-size:40px;font-weight:800;padding:100px;">DISCOVER A SPECTRUM OF STYLISH OPTIONS</h2>
+        <div>
+            <p style="text-align:justify;width:500px;line-height:25px;letter-spacing:1px;word-spacing:2px;color:#848383 ;
+                margin-left:130px;margin-top:30px;">Welcome to <b style="color:#e7ab3c;">Luxe & Legacy</b>, where timeless elegance and modern sophistication
+                come together to transform your wardrobe. Here, we are dedicated to offering a curated
+                collection of premium textiles that reflect both enduring style and contemporary flair. Our diverse range
+                of fabrics is carefully selected to ensure the highest quality, providing you with materials that are as
+                luxurious as they are versatile.<br><br>
+
+                From classic staples to the latest trends, each piece in our collection is designed to elevate your style
+                and celebrate your individuality. We believe that every garment tells a story, and at Luxe & Legacy,
+                we are committed to helping you craft yours with exceptional fabrics and impeccable craftsmanship.<br><br>
+
+                <i style="color:#b97903 ;">Explore our world of refined textiles and discover how Luxe & Legacy can bring your vision of
+                style and sophistication to life.</i>
+            </p>
+        </div>
+        <div style="margin-left:730px;margin-top:-500px;margin-bottom:100px;">
+           <img src="{% static 'homestyle/img/young-woman-sitting-outside-cafe.jpg' %}" width="500px" height="600px">
+        </div>
+        <div style="width:100%;height:1200px;background-color:#f7f7f7;padding-top:0px;" >
+            <img src="{% static 'homestyle/img/jacket1.jpeg' %}" width="400px" height="500px" style="margin-left:80px;margin-top:-400px;border-radius:10px;border: 15px solid #d5d4d3  ">
+            <img src="{% static 'homestyle/img/jacket2.jpeg' %}" width="400px" height="500px" style="margin-left:-150px;margin-top:80px;border-radius:10px;border: 15px solid #d5d4d3  ">
+            <img src="{% static 'homestyle/img/jacket3.webp' %}" width="400px" height="500px" style="margin-left:-150px;margin-top:600px;border-radius:10px;border: 15px solid #d5d4d3  ">
+
+             <h1 style="font-family:Times New Roman;font-size:45px;padding:0px;font-weight:800;margin-top:-900px;margin-left:850px;">OUR JOURNEY</h1>
+             <p style="text-align:justify;margin-left:800px;width:500px;margin-top:40px;">
+                It all started from a vision to blend tradition with innovation, driven by a passion for excellence in every
+                fabric we offer. From our humble beginnings, we’ve grown into a beacon of style and quality, committed
+                to bringing you the finest textiles. What began as a small endeavor has evolved into a legacy of
+                craftsmanship and sophistication, continually inspired by the timeless elegance of classic designs
+                and the excitement of contemporary trends. With each step, we've embraced the challenges and celebrated
+                the milestones, always striving to deliver an unparalleled experience in every piece we create.
+            </p>
+        </div>
+        <div style="margin:100px;">
+             <div class="benefit-items">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="{% static 'homestyle/img/icon-1.png' %}" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Free Shipping</h6>
+                                <p>For all order over 99$</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="{% static 'homestyle/img/icon-2.png' %}" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Delivery On Time</h6>
+                                <p>If good have prolems</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-benefit">
+                            <div class="sb-icon">
+                                <img src="{% static 'homestyle/img/icon-1.png' %}" alt="">
+                            </div>
+                            <div class="sb-text">
+                                <h6>Secure Payment</h6>
+                                <p>100% secure payment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-left">
+                        <div class="footer-logo">
+                            <a href="#"><img src="{% static 'homestyle/img/footer-logo.png' %}" alt=""></a>
+                        </div>
+                        <ul>
+                            <li>Address: 60-49 Road 11378 New York</li>
+                            <li>Phone: +65 11 188 888</li>
+                            <li>Email:  luxe&legacy@gmail.com</li>
+                        </ul>
+                        <div class="footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <div class="footer-widget">
+                        <h5>Information</h5>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Serivius</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer-widget">
+                        <h5>My Account</h5>
+                        <ul>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Shopping Cart</a></li>
+                            <li><a href="#">Shop</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="newslatter-item">
+                        <h5>Join Our Newsletter Now</h5>
+                        <p>Get E-mail updates about our latest shop and special offers.</p>
+                        <form action="#" class="subscribe-form">
+                            <input type="text" placeholder="Enter Your Mail">
+                            <button type="button">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-reserved">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-text">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <i  aria-hidden="true"></i>  <a href="https://colorlib.com" target="_blank"></a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </div>
+                        <div class="payment-pic">
+                            <img src="{% static 'homestyle/img/payment-method.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="{% static 'homestyle/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'homestyle/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'homestyle/js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'homestyle/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'homestyle/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'homestyle/js/jquery.zoom.min.js' %}"></script>
+    <script src="{% static 'homestyle/js/jquery.dd.min.js' %}"></script>
+    <script src="{% static 'homestyle/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'homestyle/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'homestyle/js/main.js' %}"></script>
+</body>
+
+</html>

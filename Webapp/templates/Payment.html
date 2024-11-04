@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="container">
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div style="margin-left:120px;margin-top:150px;color:#606060;">
+                 <h1 style="font-size:57px;color:#e7ab3c;">SECURE PAYMENT</h1>
+                <h3 style="font-size:30px;"> Welcome {{ customer.Name }}</h3>
+                <p style="width:500px;font-size:16px;font-family:sans-serif;line-height:23px;word-spacing:3px;letter-spacing:1px;">
+                    <b style="color:#e7ab3c;">Shop with total peace of mind..!</b> Our website safeguards every transaction with cutting-edge encryption
+                    and renowned payment gateways, ensuring your financial details are always secure.
+                    Experience a smooth and stress-free checkout, backed by our unwavering commitment to your security.</p><br>
+                <button>Make Payment</button>
+            </div>
+        </form>
+
+        <div class="container2">
+            <img src="{% static 'homestyle/img/payment.jpg' %}" width="500px" height="500px">
+        </div>
+
+    </div>
+
+
+<style>
+    body{
+        background-color: #E9EAEC;
+        margin:0px;
+    }
+    button{
+        border:2px solid #e7ab3c;
+        width:200px;
+        height:40px;
+        background:white;
+        font-weight:700;
+        font-size:14px;
+        color:#e7ab3c;
+        border-radius:5px;
+    }
+    button:hover{
+        background-color:#e7ab3c;
+        color:white
+    }
+    img{
+        margin-left:750px;
+        margin-top:-480px;
+        margin-bottom:30px;
+        border-radius:20px;
+    }
+</style>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_GgqJ5qD6i2W5HL"
+    data-amount="{{ payy_str }}"
+    data-currency="INR"
+    data-order_id="{{ payment.order_id }}"
+    data-buttontext=""
+    data-name="Luxe & Legacy"
+    data-description="Your description"
+    data-image=""
+    data-prefill.name="abc"
+    data-prefill.email="hafsanabts777@gmail.com"
+    data-theme.color="#e7ab3c"
+ >
+</script>
+
+</body>
+</html>

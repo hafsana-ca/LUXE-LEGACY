@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luxe & Legacy</title>
+</head>
+<body>
+    <div class="col-lg-18 grid-margin stretch-card" style="margin-top:40px;">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">View Products</h4>
+<!--                  <p class="card-description">-->
+<!--                    Add class <code>.table-hover</code>-->
+<!--                  </p>-->
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Category Name</th>
+                          <th>Product Name</th>
+                          <th>Brand Name</th>
+                          <th>Price</th>
+                          <th>Description</th>
+                          <th>Image1</th>
+                          <th>Image2</th>
+                          <th>Image3</th>
+                          <th>Options</th>
+
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                       {% for d in data %}
+                            <tr>
+                                <td>{{ d.Category_Name }}</td>
+                                <td>{{ d.Product_Name }}</td>
+                                <td>{{ d.Brand_Name }}</td>
+                                <td>{{ d.Price }}</td>
+                                <td>{{ d.Description }}</td>
+                                <td>
+                                    <img src="{{ d.Image1.url }}" alt="Profile Image">
+                                </td>
+                                <td>
+                                    <img src="{{ d.Image2.url }}" alt="Profile Image">
+                                </td>
+                                <td>
+                                    <img src="{{ d.Image3.url }}" alt="Profile Image">
+                                </td>
+
+                               <td class="align-middle"> <!-- Ensure vertical alignment of content -->
+                                    <div class="d-flex align-items-center"> <!-- Flex container to align items -->
+                                        <a href="{% url 'edit_product' dr_id=d.id %}" class="btn btn-success btn-sm btn-icon-text mr-3">Edit</a>
+                                        <a href="{% url 'delete_product' dr_id=d.id %}" class="btn btn-danger btn-sm btn-icon-text">Delete</a>
+                                    </div>
+                                </td>
+
+<!--                            <div class="d-flex align-items-center">-->
+<!--                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">-->
+<!--                              Edit-->
+<!--                              <i class="typcn typcn-edit btn-icon-append"></i>                          -->
+<!--                            </button>-->
+<!--                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">-->
+<!--                              Delete-->
+<!--                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          -->
+<!--                            </button>-->
+<!--                          </div>-->
+                        </tr>
+                       {% endfor %}
+
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+</body>
+</html>
+{% endblock %}
